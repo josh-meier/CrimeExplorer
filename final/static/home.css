@@ -1,0 +1,41 @@
+/*Home Page Formatting*/
+
+figure {
+    margin-left:0;
+    margin-right:0;
+    margin-top:0;
+    position:relative;
+    width: 60%;
+    float: left;
+}
+
+img.US {
+    border: 3px solid rgb(65, 65, 65);
+    border-radius: 8px;
+    display:block;
+    width: 100%;
+    margin: 0;
+}
+
+div.notable_locations {
+    background-color:rgb(88, 5, 88);
+    width: 18%;
+    border-radius: 8px;
+    float: right;
+    padding: 10px;
+    margin: 20px;
+    position:relative;
+    color: rgb(241, 241, 247);
+}
+
+div.notable_locations li a:link {
+    color: rgb(241, 241, 247);
+}
+
+div.notable_locations li a:hover {
+    color: rgb(219, 24, 219);
+}
+
+div.notable_locations li a:visited {
+    color: rgb(241, 241, 247);
+}

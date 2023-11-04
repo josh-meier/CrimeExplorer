@@ -1,0 +1,124 @@
+.head {
+    grid-area: head;
+}
+
+.map {
+    grid-area: map;
+}
+
+.stats {
+    grid-area: stats;
+}
+
+.pie{
+    grid-area: pie;
+}
+
+.left_bar {
+    grid-area: left_bar;
+}
+
+.right_bar {
+    grid-area: right_bar;
+}
+
+/*Grid Formatting for State Results Section*/
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        'head head head head head head'
+        'map map map map stats stats'
+        'pie pie left_bar left_bar right_bar right_bar';
+    grid-gap: 0;
+    padding: 10px;
+    border: 3px solid rgb(65, 65, 65);
+    border-radius: 8px;
+    margin: 0 auto; 
+    width: 86%;
+    position: relative;
+    background-color: whitesmoke;
+}
+
+
+.grid-container > div {
+    text-align: left;
+    padding: 0;
+  }
+
+.results_title {
+    display: block;
+    margin:0;
+}
+
+h3.left_section_title {
+    margin-top: 0;
+    margin-left: 0;
+}
+
+h3.results_header {
+    text-align: left;
+    margin-top: 0;
+    margin-left: 0;
+}
+
+.search_city input[type=text]{
+    padding: 6px;
+    border: none;
+    width: 220px;
+    font-size: 17px;
+    border-radius: 5px;
+    margin: 0;
+    position: relative;
+}
+
+.search_city input[type=submit]{
+    padding: 5px 15px;
+    background: white;
+    border: 0 none;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    position: relative;
+
+}
+
+div.pie_chart {
+    width:100%;
+    margin: 2%;
+    margin-top: 0;
+    position:relative;
+}
+
+div.bar_chart {
+    width:100%;
+    margin: 2%;
+    position:relative;
+}
+
+.embed-container {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.google-map {
+    padding-bottom: 70%;
+    position: relative;
+}
+
+.google-map iframe {
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: relative;
+}
+
+.return_button {
+    font-family: Verdana, Geneva, sans-serif; 
+    float:bottom;
+    display: block;
+    color: blue;
+    text-decoration: none;
+    text-align: left;
+    padding: 5px;
+}

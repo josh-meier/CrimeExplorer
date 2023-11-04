@@ -1,0 +1,138 @@
+<html lang="en"> 
+<head>
+<title>All About Crime Data</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename= 'home.css')}}"/>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename= 'nav_and_styling.css')}}"/>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"> </script>
+        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css" rel="stylesheet" type="text/css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js">  
+         </script>  
+        <script>
+            $( function() {
+            var availableOptions = [
+                {% for option in valid_searchbar_locations %}
+                    "{{option}}",
+                {% endfor %}
+            ];
+            $( "#options" ).autocomplete({
+                source: availableOptions
+            });
+            } );
+        </script>
+
+</head>
+
+<body>
+<header class = "main_header">
+    <h1>2021 US Crime Explorer</h1>
+
+    <nav class ="horizontal_nav">
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about">About the Data</a></li>
+    </ul>
+    </nav>
+</header>
+
+<div class="notable_locations">
+    <h3 class="section_title">Notable Locations</h2>
+    <ul>
+        <li><a href="/city_result/Colorado/Lakeside/#results">Lakeside, CO</a> is the city with the highest number of offenses per person in the US</li>
+        <li><a href="/city_result/Alaska/Skagway/#results">Skagway, AL</a>, along with over 100 other cities, had 0 violent or property offenses occur in 2021</li>
+        <li>Arkansas, Florida, Delaware, and D.C. are missing from the <a href="/about#dataset">dataset</a></li>
+    </ul>
+    <h3 class="section_title">What can our data tell us?</h2>
+        <ul>
+            <li>the crime rate of a specific location</li>
+            <li>the most/least dangerous areas on the city, state, or US level by crime rate</li>
+            <li>the <a href="/about#dataset">types of crimes</a> being committed (and how often) in a specific location </li>
+        </ul>
+</div>
+
+<div class="vertical_nav_grid-container">
+    <div class="nav_title">
+        <h4>Visualize Data for a Specific State or City</h4>
+    </div>
+    <div class="search_state">
+        <form action="/" method="post">            
+            <input type="text" placeholder="Search for a city/state..." id="options" name="location" aria-label="Search for a city/state">
+            
+            <input type="submit" value="Search">
+        </form> 
+        
+        {% if valid_search_input == False %}
+        <script>
+            alert("Invalid input! Please enter a valid city or state. Keep in mind inputs are case-sensitive and there's a chance your desired location is not in our dataset. We recommend only using autocompleted locations.");
+        </script>  
+        {% endif %}
+    </div> 
+    <div class="or">
+        <h4>or...</h4>
+     </div>
+
+    <div class="states_list">
+        <ul>
+            <li class = "select">Select a state</li>
+            <li><a href="/state_result/Alabama/#results">Alabama</a></li>
+            <li><a href="/state_result/Alaska/#results">Alaska</a></li>
+            <li><a href="/state_result/Arizona/#results">Arizona</a></li>
+            <li><a href="/state_result/California/#results">California</a></li>
+            <li><a href="/state_result/Colorado/#results">Colorado</a></li>
+            <li><a href="/state_result/Connecticut/#results">Connecticut</a></li>
+            <li><a href="/state_result/Georgia/#results">Georgia</a></li>
+            <li><a href="/state_result/Hawaii/#results">Hawaii</a></li>
+            <li><a href="/state_result/Idaho/#results">Idaho</a></li>
+            <li><a href="/state_result/Illinois/#results">Illinois</a></li>
+            <li><a href="/state_result/Indiana/#results">Indiana</a></li>
+            <li><a href="/state_result/Iowa/#results">Iowa</a></li>
+            <li><a href="/state_result/Kansas/#results">Kansas</a></li>
+            <li><a href="/state_result/Kentucky/#results">Kentucky</a></li>
+            <li><a href="/state_result/Louisiana/#results">Louisiana</a></li>
+            <li><a href="/state_result/Maryland/#results">Maryland</a></li>
+            <li><a href="/state_result/Massachusetts/#results">Massachusetts</a></li>
+            <li><a href="/state_result/Michigan/#results">Michigan</a></li>
+            <li><a href="/state_result/Minnesota/#results">Minnesota</a></li>
+            <li><a href="/state_result/Mississippi/#results">Mississippi</a></li>
+            <li><a href="/state_result/Missouri/#results">Missouri</a></li>
+            <li><a href="/state_result/Montana/#results">Montana</a></li>
+            <li><a href="/state_result/Nebraska/#results">Nebraska</a></li>
+            <li><a href="/state_result/Nevada/#results">Nevada</a></li>
+            <li><a href="/state_result/New_Hampshire/#results">New Hampshire</a></li>
+            <li><a href="/state_result/New_Jersey/#results">New Jersey</a></li>
+            <li><a href="/state_result/New_Mexico/#results">New Mexico</a></li>
+            <li><a href="/state_result/New_York/#results">New York</a></li>
+            <li><a href="/state_result/North_Carolina/#results">North Carolina</a></li>
+            <li><a href="/state_result/North_Dakota/#results">North Dakota</a></li>
+            <li><a href="/state_result/Ohio/#results">Ohio</a></li>
+            <li><a href="/state_result/Oklahoma/#results">Oklahoma</a></li>
+            <li><a href="/state_result/Oregon/#results">Oregon</a></li>
+            <li><a href="/state_result/Pennsylvania/#results">Pennsylvania</a></li>
+            <li><a href="/state_result/Rhode_Island/#results">Rhode Island</a></li>
+            <li><a href="/state_result/South_Carolina/#results">South Carolina</a></li>
+            <li><a href="/state_result/South_Dakota/#results">South Dakota</a></li>
+            <li><a href="/state_result/Tennessee/#results">Tennessee</a></li>
+            <li><a href="/state_result/Texas/#results">Texas</a></li>
+            <li><a href="/state_result/Utah/#results">Utah</a></li>
+            <li><a href="/state_result/Vermont/#results">Vermont</a></li>
+            <li><a href="/state_result/Virginia/#results">Virginia</a></li>
+            <li><a href="/state_result/Washington/#results">Washington</a></li>
+            <li><a href="/state_result/West_Virginia/#results">West Virginia</a></li>
+            <li><a href="/state_result/Wisconsin/#results">Wisconsin</a></li>
+            <li><a href="/state_result/Wyoming/#results">Wyoming</a></li>
+        </ul>
+    </div>
+
+</div>
+
+
+<figure>
+    <h3 class="heading"> 2021 Crime Map: Explore the 2021 Crime Statistics of Cities and States</h3>
+    <div class="embed-container"><iframe width="100%" height="70%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="US Crime Map" src= "{{ US_map }}" ></iframe></div>
+</figure>
+
+
+{% block content %}{% endblock %}
+
+</body>
+</html>

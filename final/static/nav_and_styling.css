@@ -1,0 +1,251 @@
+/*General Formatting of headings and text*/
+html, body{
+    margin: 0;
+    padding: 0;
+}
+
+.main_header{
+    background-image: url("Header_Image.avif");
+    background-size: cover;
+    padding-bottom: 20px
+}
+
+h1 {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    width: 100%;
+}
+
+h1, h2, h3, h4 {
+   font-family: Verdana, Geneva, sans-serif; 
+}
+
+h3 {
+    text-align: left;
+    text-size-adjust: auto;
+    margin-left:12%;    
+}
+
+h3.heading {
+    text-align: left;
+    margin:0;
+    text-size-adjust: auto;
+}
+
+h3.section_title {
+    text-align: left;
+    margin-top: 3%;
+    margin-left: 0;
+}
+
+p {
+    font-family: Verdana, Geneva, sans-serif;
+    line-height: 1.4;
+}
+
+div {
+    clear: left;
+    padding-bottom: 10px;
+}
+
+ul {
+    width: 85%;
+}
+
+li {
+    font-family: Verdana, Geneva, sans-serif;
+    line-height: 1.4;
+}
+
+
+/*Horizontal Top Bar Navigation*/
+
+nav.horizontal_nav ul {
+    list-style-type: none;
+    overflow: hidden;
+    margin: 0;
+    margin-left:auto;
+    margin-right:auto;
+
+}
+
+nav.horizontal_nav li {
+    float: left;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+nav.horizontal_nav li a {
+    display: inline-block;
+    color: rgb(241, 241, 247);
+    text-decoration: none;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 90px;
+    padding-left: 90px;
+}
+
+nav.horizontal_nav li a:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, .3);
+}
+
+/*Vertical Left Bar Navigation*/
+
+.nav_title {
+    grid-area: nav_title;
+}
+
+.search_state {
+    grid-area: search_state;
+}
+
+.or {
+    grid-area: or;
+}
+
+.states_list {
+    grid-area: states_list;
+}
+
+div.vertical_nav_grid-container {
+    display: grid;
+    grid-template-areas:
+        'nav_title'
+        'search_state'
+        'or'
+        'states_list';
+    grid-gap: 0;
+    padding: 0;
+    border-radius: 8px;
+    margin: 20px;
+    width: 14.5%;
+    height: 70%; 
+    list-style-type: none;
+    overflow-y: hidden;
+    float: left;
+    background-color: rgb(53, 86, 218);
+}
+
+div.nav_title {
+    display:block;
+    font-size: 1.5em;
+    text-size-adjust: auto;
+    color: rgb(241, 241, 247);
+    font-weight: medium;
+    text-align: center;
+    padding: 5;
+}
+
+h4 {
+    margin: 10px;
+    padding: 0;
+}
+
+div.or {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    text-size-adjust: auto;
+    color: rgb(241, 241, 247);
+    font-weight: medium;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    height:30px;
+    top: -50px;
+}
+
+
+.search_state{
+    text-align: center;
+    height:60px;
+    padding:0;
+}
+
+
+.search_state input[type=text]{
+    display:block;
+    padding: 6px;
+    padding-bottom:0;
+    border: none;
+    width: 80%;
+    font-size: 17px;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+.search_state input[type=submit]{
+    padding: 5px 15px;
+    background: whitesmoke;
+    border: 0 none;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    display:block;
+    margin: 0 auto;
+    margin-top: 5px;
+    padding-bottom:0;
+}
+
+.select {
+    position: sticky; 
+    top: 0;
+    background-color: blue;
+    font-size: 1em;
+    color: rgb(241, 241, 247);
+    text-decoration: none;
+    text-align: left;
+    padding: 5px;
+    margin-top: 0;
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+
+div.states_list{
+    overflow: hidden;
+}
+
+div.states_list ul {
+    margin: 20px;
+    margin-left:17%;
+    margin-right:20%;
+    background-color: rgb(18, 74, 215);
+    border-radius: 8px;
+    padding: 0;
+    width: 160px;
+    height: calc(100% - 55px);
+    overflow-y: scroll; 
+    float: left;
+}
+
+div.states_list li {
+    display:block;
+    font-size: 1em;
+    font-weight: medium;
+}
+
+div.states_list li a {
+    display: block;
+    color: rgb(241, 241, 247);
+    text-decoration: none;
+    text-align: left;
+    padding: 5px;
+}
+
+div.states_list li a:hover {
+    color: white;
+    background-color: blue;
+}
+
+.autocomplete-item {
+    max-width: 200px; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

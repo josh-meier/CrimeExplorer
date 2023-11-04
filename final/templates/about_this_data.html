@@ -1,0 +1,66 @@
+<html lang="en"> 
+
+<head>
+<title>All About Crime Data</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename= 'home.css')}}"/>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename= 'nav_and_styling.css')}}"/>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename= 'about.css')}}"/>
+
+</head>
+
+<body>
+    <header class = "main_header">
+        <h1>2021 US Crime Explorer</h1>
+    
+        <nav class ="horizontal_nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About the Data</a></li>   
+        </ul>
+        </nav>
+    </header>
+
+<div class="source">
+    <h2 id="data">Data source</h2>
+    <p>Main: <a href="https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/home">FBI Crime Data Explorer.</a></p>
+    <p>Data retrieved from <a href="https://cde.ucr.cjis.gov/LATEST/webapp/#/pages/downloads">"Documents and Downloads Page"</a> on 27 April 2023.</p>
+    <p><a href="https://www.fbi.gov/privacy-policy">Data usage policy</a></p>
+</div>      
+ 
+
+<div class="content">
+    <h2>Why Crime?</h2>
+    <p>This crime dataset was one of the first we encountered, and we spend a long time exploring it for fun. Our initial curiosity and eagerness led us to explore the crime statistics for our home states. However, as we delved deeper, we began to realize the practical uses and implications of this data for areas such as journalism, politics, etc. Compared to other lighthearted datasets, we recognized the importance and significance of studying and learning from crime data. Motivated by its relevance, we decided to use this dataset for our website project.  </p>
+    <p></p>
+</div>
+
+<div class="content">
+    <h2 id="dataset">What does the dataset look like?</h2>
+    <p>The nationwide data we are utilizing is organized by city and by state with the number of offenses occurred in each city being the central pieces of data. The offenses are divided up into two categories: violent offenses and property offenses. This page from the <a href="https://ucr.fbi.gov/crime-in-the-u.s/2019/crime-in-the-u.s.-2019/topic-pages/offenses-known-to-law-enforcement">FBI's Uniform Crime Reporting Program</a> goes into more detail.</p>
+    <ul>
+        <li>Violent Offenses: murder and nonnegligent manslaughter, rape, robbery, and aggravated assault</li>
+        <li>Property Offenses: burglary, larceny-theft, motor vehicle theft, and arson</li>
+    </ul>
+</div>
+
+<div class="content">
+    <h2>Changes Made to Dataset</h2>
+    <p>In our national offenses data, we did not change anything other than fixing the government's incorrect spelling of Wisconsin. They seemed to have it confused with "Wisonsin".</p>
+</div>
+
+<div class="content">
+    <h2>Limitations</h2>
+    <p>Notably, our national data is missing all statistics on Florida, Delaware, Arksansas, and District of Columbia (if it can be counted as a similar entity) as well as there being limited data on a few more states like Hawaii, California Illinois, Maryland, New Jersey, New Mexico, New York, and Pennsylvania. The UCR reports from 2021 most likely had missing data because not all states' agencies had reported data for various reasons, possibly due to the states transferring over to the newer NIBRS over UCR. The dataset we downloaded had this at the bottom: "Limited data for 2021 were available for California, District of Columbia, Florida, Illinois, Maryland, New Jersey, New Mexico, New York, and Pennsylvania. "</p>
+    <p>Additionally, we want to address the issue of numerous cities with zero reported crimes. We find it difficult to believe that an entire city can go a year without any violent or nonviolent crime. However, we are not in a position to conclusively deny that statistic for every single city that had zero crimes reported. Therefore, our website includes all cities with zero crimes.  </p>
+</div>
+
+<div class="content">
+    <h2>How should this data be used?</h2>
+    <p>We highly discourage the use of statistics from this dataset without proper recognition of the wide range of factors that affect how much crime and of what type occurs in a location. Things such as population density, economic conditions, social and cultural factors, policies of the justice system, etc. all affect the crimes that people commit. The FBI created a <a href="https://ucr.fbi.gov/ucr-statistics-their-proper-use">document on responsible crime reporting</a>  that is worth checking out. 
+        We also encourage everyone to further research the system's inability to consistently report accurate data based on inconsistent submission of data by individual agencies and the narrow crime definitions used among other things. Here is an <a href="https://www.poynter.org/reporting-editing/2022/what-is-nibrs-new-fbi-data-explained/">article by Kelly McBride</a> on Poynter, a leading organization on reporting ethics and fact-based journalism, that hits this exact point.    </p>
+    </div>  
+</div>
+
+
+</body>
+</html>

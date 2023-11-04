@@ -1,0 +1,182 @@
+<html lang="en"> 
+
+<head>
+<title>All About Crime Data</title>
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename= 'state_results.css')}}"/>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename= 'home.css')}}"/>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename= 'nav_and_styling.css')}}"/>
+
+<!-- plotly-->
+    <script src='https://cdn.plot.ly/plotly-2.20.0.min.js'></script>
+
+<!--  autofill source code for search bar-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js">  
+    </script>  
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.js">  
+    </script>  
+
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/ui-lightness/jquery-ui.css"
+        rel="stylesheet" type="text/css" />
+        <script>
+            $( function() {
+            var availableOptions = [
+                {% for option in valid_searchbar_locations %}
+                    "{{option}}",
+                {% endfor %}
+            ];
+            $( "#options" ).autocomplete({
+                source: availableOptions
+            });
+            } );
+        </script>
+        <script>
+            $( function() {
+            var withinStateOptions = [ //come back to this to have autofill for only cities in that state
+                {% for option in valid_searchbar_locations %}
+                    {% if state in option %}
+                        "{{option}}",
+                    {% endif %}
+                {% endfor %}
+            ]
+            $( "#state_options" ).autocomplete({
+                source: withinStateOptions
+                });
+            } );
+        </script>
+</head>
+
+<body>
+{% extends "home.html" %}
+
+{% block content %} 
+<div class="grid-container">
+
+    <div class="head">
+        <h2 class="results_title"> 
+            <a id= "results">{{ state }}:</a>
+            <div class="search_city">
+                <form action="/state_result/{{state}}/#results" method="post" onsubmit="">            
+                    <input type="text" placeholder="Search for a city in {{ state }}..." id="state_options" name="location" aria-label="Search for a city/state">
+                    
+                    <input type="submit" value="Search">
+                </form> 
+            </div>
+             
+        </h2>
+    </div>
+
+    <div class="map">
+        <h3 class="results_header">Heat Map of Crime in {{ state }}:</h3>
+
+        <div class="embed-container"><iframe width="750" height="325" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="US Crime Map" src= "{{ heat_map_url }}" ></iframe></div>
+    </div>
+
+    <div class="stats">
+
+        <h3 class="section_title">Crime Rate in {{ state }}:</h3>
+
+        <ul>
+            <li>{{ state_CR }} crimes per person in 2021</li>
+            <li>Ranked {{ state_ranking }} out of 47* states (where rank 1 is the highest crime rate; see <a href="/about">About The Data</a> for more info)</li>
+        </ul>
+
+        <h3 class="section_title">City with Highest Crime Rate:</h3>
+        <ul>
+            <li> {{ city_highest_CR }} <a href="{{ city_highest_URL }}">(click for more info)</a></li>
+        </ul>
+
+        <h3 class="section_title">City with Lowest Crime Rate:</h3>
+        <ul>
+            <li> {{ city_lowest_CR }} <a href="{{ city_lowest_URL }}">(click for more info)</a></li>
+        </ul>
+    </div>
+
+    <div class="pie">
+        
+        <div id="pie" class="pie_chart"></div>
+            <script> 
+                var counts = {{crime_type_values|tojson}}      
+                var pie_rotation = {{rotation}}              
+                var data = [{
+                    values: counts,
+                    labels: ['Burglary','Larceny theft','Motor Vehicle theft','Arson', 'Murder and NNM', 'Rape', 'Robbery', 'Aggravated Assault'],
+                    textinfo: "label+percent",
+                    textposition: "outside",
+                    automargin: true,
+                    type: 'pie',
+                    rotation: pie_rotation,
+                }];
+                var layout = {
+                    title: "<b>Proportions of Each Crime Type</b>",
+                    height:400,
+                    width:400,
+                    showlegend: false,
+                    paper_bgcolor:"#f5f5f5",
+                };
+                Plotly.newPlot('pie', data, layout, {staticPlot: true});
+            </script>
+    </div>
+
+    <div class="left_bar">
+        
+        <div id = "prop_chart" class="bar_chart"></div>
+            <script>
+            var property_counts = {{property_crime_counts|tojson}}
+            var data = [{
+                y: property_counts,
+                x: ['Burglary','Larceny theft','Motor Vehicle theft','Arson'],
+                automargin: true,
+                type: 'bar'
+            }];
+
+            var layout = {
+                title:"<b>Property Crime by Type</b>",
+                height:450,
+                width:450,
+                showlegend: false,
+                paper_bgcolor:"#f5f5f5",
+                plot_bgcolor: "#f2f2f2",
+            };
+            var config = {
+                displayModeBar: false,
+            };
+            Plotly.newPlot('prop_chart', data, layout, config);
+            </script>
+
+    </div>
+
+    <div class="right_bar">
+
+        <div id="violent_chart" class="bar_chart"></div>
+            <script>
+                var violent_counts = {{violent_crime_counts|tojson}}
+                var data = [{
+                    y: violent_counts,
+                    x: ['Murder and NNM', 'Rape', 'Robbery', 'Aggravated Assault'],
+                    automargin: true,
+                    type: 'bar'
+                }];
+
+                var layout = {
+                    title:"<b>Violent Crime by Type</b>",                
+                    height:450,
+                    width:450,
+                    showlegend: false,
+                    paper_bgcolor:"#f5f5f5",
+                    plot_bgcolor: "#f2f2f2",
+                };
+                var config = {
+                    displayModeBar: false,
+                };                
+                Plotly.newPlot('violent_chart', data, layout, config);
+            </script>
+    </div>
+
+
+</div>
+{% endblock %}
+
+</body>
+</html>
